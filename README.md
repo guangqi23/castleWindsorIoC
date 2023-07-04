@@ -1,5 +1,5 @@
 # castleWindsorIoC
-Ran in .Net 7.0. 
+Ran in .NET 7.0. 
 
 Components : 
 IConsoleWriter
