@@ -1,7 +1,7 @@
 ﻿using System;
 namespace codementorIOCproject
 {
-	public interface ICompositionRoot
+	public interface IConsoleWriter
 	{
 		void LogMessage(string message);
 	}

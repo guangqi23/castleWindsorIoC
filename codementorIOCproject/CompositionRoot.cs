@@ -6,20 +6,23 @@ namespace codementorIOCproject
 {
 	public class CompositionRoot : ICompositionRoot
 	{
+        readonly IConsoleWriter consoleWriter;
+        readonly ISingletonDemo singletonDemo;
+
+        public CompositionRoot(IConsoleWriter consoleWriter, ISingletonDemo singletonDemo)
+        {
+            this.consoleWriter = consoleWriter;
+            this.singletonDemo = singletonDemo;
+            consoleWriter.LogMessage("Hello from CompositionRoot constructor");
+        }
+
 		// Composition Root contain other application logic
-		public CompositionRoot()
-		{
-			var container = new WindsorContainer();
-
-			//Register Windsor container with interface and mapped it to it implementing CompositionRoot type
-			container.Register(Component.For<ICompositionRoot>().ImplementedBy<CompositionRoot>());
-
-			//Initialising Windsor Container to give an insance of ICompositionRoot
-			var root = container.Resolve<ICompositionRoot>();
-
-			Console.ReadLine();
-
-		}
-	}
+        public void LogMessage(string message)
+        {
+            var msg = $"CompositionRoot.LogMessage : singletonDemo.ObjectId={singletonDemo.ObjectId}";
+            consoleWriter.LogMessage(msg);
+			Console.WriteLine(message);
+        }
+    }
 }
 
